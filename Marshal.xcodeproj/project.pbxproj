@@ -34,6 +34,7 @@
 		CCAE549F1CFDF9D30069AC65 /* UnmarshalingWithContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAE549E1CFDF9D30069AC65 /* UnmarshalingWithContext.swift */; };
 		CCB6D6C21CF90E7F00422F4C /* UnmarshalingWithContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6D6C01CF8F2F500422F4C /* UnmarshalingWithContextTests.swift */; };
 		D0F2F41C1FC05564003751A7 /* Date-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2F41B1FC05564003751A7 /* Date-Extensions.swift */; };
+		D0F2F4201FC058FE003751A7 /* Decimal-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2F41F1FC058FE003751A7 /* Decimal-Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		CCAE549E1CFDF9D30069AC65 /* UnmarshalingWithContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnmarshalingWithContext.swift; path = Sources/UnmarshalingWithContext.swift; sourceTree = SOURCE_ROOT; };
 		CCB6D6C01CF8F2F500422F4C /* UnmarshalingWithContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalingWithContextTests.swift; sourceTree = "<group>"; };
 		D0F2F41B1FC05564003751A7 /* Date-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date-Extensions.swift"; path = "Sources/Date-Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		D0F2F41F1FC058FE003751A7 /* Decimal-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Decimal-Extensions.swift"; path = "Sources/Decimal-Extensions.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				AFBED2751C7E1E5100622331 /* JSON.swift */,
 				AFBED26F1C7E1CF100622331 /* Error.swift */,
 				CC75045F1DA6B27500643B7A /* Migration.swift */,
+				D0F2F41F1FC058FE003751A7 /* Decimal-Extensions.swift */,
 			);
 			path = Marshal;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F2F4201FC058FE003751A7 /* Decimal-Extensions.swift in Sources */,
 				AECB67181CD317CA00141059 /* MarshalDictionary.swift in Sources */,
 				AFBED27E1C7F699600622331 /* UnmarshalUpdating.swift in Sources */,
 				AFBED2721C7E1DA800622331 /* Marshaling.swift in Sources */,
