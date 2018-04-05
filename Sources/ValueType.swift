@@ -72,7 +72,7 @@ extension Array where Element: ValueType {
         }
         
         if discardingErrors {
-            return anyArray.flatMap {
+            return anyArray.compactMap {
                 let value = try? Element.value(from: $0)
                 guard let element = value as? Element else {
                     return nil
