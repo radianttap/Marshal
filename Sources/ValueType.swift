@@ -13,6 +13,27 @@
 
 import Foundation
 
+//
+//	Added support conversion from `0x10` into various Integers.
+//	Per https://stackoverflow.com/a/28035219/108859
+//	we need the following two extensions.
+//
+extension Collection {
+	func unfoldSubSequences(limitedTo maxLength: Int) -> UnfoldSequence<SubSequence,Index> {
+		sequence(state: startIndex) { start in
+			guard start < self.endIndex else { return nil }
+			let end = self.index(start, offsetBy: maxLength, limitedBy: self.endIndex) ?? self.endIndex
+			defer { start = end }
+			return self[start..<end]
+		}
+	}
+}
+extension StringProtocol {
+	var byte: UInt8? { UInt8(self, radix: 16) }
+	var hexaToBytes: [UInt8] { unfoldSubSequences(limitedTo: 2).compactMap(\.byte) }
+	var hexaToData: Data { .init(hexaToBytes) }
+}
+
 
 // MARK: - ValueType
 
@@ -142,6 +163,13 @@ extension URL: ValueType {
 
 extension Int8: ValueType {
     public static func value(from object: Any) throws -> Int8 {
+		if let s = object as? String, s.hasPrefix("0x") {
+			if let value = s.replacingOccurrences(of: "0x", with: "").byte {
+				return Int8(value)
+			}
+			throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
+		}
+
         guard let value = object as? Int else {
             throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
         }
@@ -167,7 +195,14 @@ extension Int32: ValueType {
 
 extension UInt8: ValueType {
     public static func value(from object: Any) throws -> UInt8 {
-        guard let value = object as? UInt else {
+		if let s = object as? String, s.hasPrefix("0x") {
+			if let value = s.replacingOccurrences(of: "0x", with: "").byte {
+				return value
+			}
+			throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
+		}
+
+		guard let value = object as? UInt else {
             throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
         }
         return UInt8(value)
